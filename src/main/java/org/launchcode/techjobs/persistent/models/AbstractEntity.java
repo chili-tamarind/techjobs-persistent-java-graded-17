@@ -1,18 +1,19 @@
 package org.launchcode.techjobs.persistent.models;
 
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.util.Objects;
 
+@MappedSuperclass // MyToDo
 public abstract class AbstractEntity {
 
+    @Id // MyToDo
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // MyToDo Annotation for Hibernate to flag as primary key
     private int id;
 
+    @NotNull(message = "Field cannot be empty") // MyToDo
+    @Size(min=1, max=255, message = "Text length is out of bounds") // MyToDo
     private String name;
 
     public int getId() {

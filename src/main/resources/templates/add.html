@@ -9,28 +9,49 @@
 
 <form method="post" style="max-width:600px;">
     <div class="form-group">
-        <label th:for="name">Name</label>
+        <label class="bold-v2" th:for="name">Name</label>
         <input class="form-control" th:field="${job.name}" />
         <span th:errors="${job.name}" class="error"></span>
+        <hr>
     </div>
 
     <div class="form-group">
-        <label th:for="employer">Employer</label>
+        <label class="bold-v2" th:for="employer">Employer</label> <br>
         <select name="employerId">
             <option th:each="employer : ${employers}"
                     th:text="${employer.name}"
                     th:value="${employer.id}"></option>
         </select>
-        <a th:href="@{'/employers/add'}">Add Employers</a>
+        <br> <br>
+        <a class="bold-v1" th:href="@{'/employers/add'}">Add Employers</a>
+        <hr>
     </div>
 
+<!--    <div class="form-group">-->
+<!--        <label class="bold-v2" th:for="skills">Skills</label> <br>-->
+<!--        <th:block th:each="skill : ${skills}">-->
+<!--            <input type="checkbox" name="skills" th:value="${skill.id}">-->
+<!--            <label th:text="${skill.name}"></label>-->
+<!--        </th:block>-->
+<!--        <br>-->
+<!--        <a class="bold-v1" th:href="@{'/skills/add'}">Add Skills</a>-->
+<!--        <hr>-->
+<!--    </div>-->
+
+
     <div class="form-group">
-        <label th:for="skills">Skills</label>
-        <th:block th:each="skill : ${skills}">
-            <input type="checkbox" name="skills" th:value="${skill.id}">
-            <label th:text="${skill.name}"></label>
-        </th:block>
-        <a th:href="@{'/skills/add'}">Add Skills</a>
+        <label class="bold-v2" th:for="skills">Skills</label> <br>
+        <div class="checkbox-container">
+            <th:block th:each="skill : ${skills}">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="skills" th:value="${skill.id}">
+                    <label th:text="${skill.name}"></label>
+                </div>
+            </th:block>
+        </div>
+        <br>
+        <a class="bold-v1" th:href="@{'/skills/add'}">Add Skills</a>
+        <hr>
     </div>
 
     <input type="submit" value="Add Job" />

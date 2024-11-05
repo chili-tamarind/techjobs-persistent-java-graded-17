@@ -1,3 +1,115 @@
+/* STUFF */
+body {
+    color: black;
+    margin-top: 20px;
+    position: relative;
+}
+
+/* General styles for all buttons */
+button, input[type="submit"] {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ /* Add space for scrolling */
+.spacer {
+    height: 1000px;
+}
+
+/* Append the fixed background div */
+body::after {
+    content: '';
+    display: block;
+    position: fixed;
+    bottom: 0px;  right: 0px;
+    width: 200px; height: 200px;
+
+    background-image: url('LaunchCode-logo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1; /* Ensure it appears above other content */
+}
+
+#fragmentActionChoices{
+    margin: 5px 100px 25px 100px;
+    color: white;
+}
+
+#fragmentActionChoicesList{
+    font-size: 1.25em; /* times the body font size */
+}
+
+#homepageImage{
+    float: center;
+    height: 150px;
+    background-image: url('techies.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#homepageHeader{
+    text-align: center;
+    padding: 50px 0px 5px 0px;
+}
+
+/* G4 */
+
+.bold-v1 { /* Adds */
+    font-weight: bold;
+    font-size: 0.95em;
+    color: #E30B5C;
+}
+
+.bold-v2 {
+    font-weight: bold;
+    font-size: 1.12em;
+    color: #0F52BA;
+}
+
+/*Column layout - checkbox*/
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5px; /* Adds space between items (rows and columns) */
+    width: 100%;
+    margin: 0 auto; /* Centers the container horizontally */
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Left-aligns the checkbox and label */
+}
+
+.checkbox-item input {
+    margin-right: 5px; /* Space between checkbox and label */
+   vertical-align: middle;
+}
+
+.checkbox-item label {
+    vertical-align: middle;
+}
+
+/*Column layout - list*/
+
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  padding: 10px;
+}
+
+.list-container li {
+  text-align: left;
+}
+
+/* ________________________________ */
+
 .body-content {
     margin-top: 72px;
 }

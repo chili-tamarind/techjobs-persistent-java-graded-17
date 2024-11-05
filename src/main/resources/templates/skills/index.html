@@ -10,12 +10,13 @@
 
 <div class="container body-content">
     <h2>Skills</h2>
-    <ul>
+    <ul class="list-container">
         <li th:each="skill : ${skills}">
             <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
         </li>
     </ul>
-    <a th:href="@{'/skills/add'}">Add Skills</a>
+    <br> <hr>
+    <a class="bold-v1" th:href="@{'/skills/add'}">Add Skills</a>
 
 </div>
 

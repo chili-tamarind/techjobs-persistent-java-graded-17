@@ -6,15 +6,25 @@
 
 <div th:replace="~{fragments :: page-header}"></div>
 
+<!--MOD -->
+<h2 id="homepageHeader">
+    <a href="https://education.launchcode.org/java-web-dev-curriculum/assignments/techjobs-persistent/index.html" target="_blank">
+        Welcome to Assignment #4 - Tech Jobs Persistent
+    </a>
+</h2>
+<div id="homepageImage"></div>
+<!--MOD -->
+
 <div class="container body-content">
     <h2>TechJobs</h2>
-    <ul>
+    <ul class="list-container">
         <li th:each="job : ${jobs}">
             <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
         </li>
     </ul>
-
 </div>
 
 </body>
 </html>
+
+<!--Adding the mySQL user https://www.youtube.com/watch?v=GVOpKW3NcMk-->

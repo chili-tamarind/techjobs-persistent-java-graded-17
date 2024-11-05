@@ -10,12 +10,13 @@
 
 <div class="container body-content">
     <h2>Employers</h2>
-    <ul>
+    <ul class="list-container">
         <li th:each="employer : ${employers}">
             <a th:href="@{'/employers/view/' + ${employer.id}}" th:text="${employer.name}"></a>
         </li>
     </ul>
-    <a th:href="@{'/employers/add'}">Add Employers</a>
+    <br> <hr>
+    <a class="bold-v1" th:href="@{'/employers/add'}">Add Employers</a>
 
 </div>
 
