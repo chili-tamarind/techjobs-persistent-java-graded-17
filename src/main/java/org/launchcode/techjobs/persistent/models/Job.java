@@ -43,19 +43,9 @@ public class Job extends AbstractEntity{
        public void setName(String name) { this.name = name;
    }*/
 
-    public Employer getEmployer() {
-        return employer;
-    }
+    public Employer getEmployer() { return employer; }
+    public void setEmployer(Employer employer) { this.employer = employer; }
 
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
-    }
-
-    public List<Skill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(List<Skill> skills) {
-        this.skills = skills;
-    }
+    public List<Skill> getSkills() { return skills; }
+    public void setSkills(List<Skill> skills) { this.skills = skills; }
 }

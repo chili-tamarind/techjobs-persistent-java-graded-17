@@ -8,18 +8,27 @@
 <nav th:replace="~{fragments :: page-header}"></nav>
 
 <div class="job-listing">
-    <p th:text="${'ID: ' + job.id}"></p>
-    <p th:text="${'Name: ' + job.name}"></p>
+    <p><span class="bold-v4">ID:</span> <span th:text="${job.id}"></span></p>
+    <p><span class="bold-v4">Name:</span> <span th:text="${job.name}"></span></p>
     <p>
-        Employer: <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>
+    <p> <span class="bold-v4">Employer</span> <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>
     </p>
-    <p> Skills:
-    <ul>
-        <li th:each="skill : ${job.skills}">
-            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
-        </li>
-    </ul>
+<!--    <p> Skills:-->
+<!--    <ul>-->
+<!--        <li th:each="skill : ${job.skills}">-->
+<!--            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    </p>-->
+
+    <p> <span class="bold-v4">Skills: </span>
+        <span th:if="${#lists.isEmpty(job.skills)}">None specified</span>  <!-- Value for empty skill list -->
+        <span th:unless="${#lists.isEmpty(job.skills)}" th:each="skill, skillIndex: ${job.skills}">
+        <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
+        <span th:if="${skillIndex.index < job.skills.size() - 1}">, </span>
+        </span>
     </p>
+
 </div>
 
 </body>

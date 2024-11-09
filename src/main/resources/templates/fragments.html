@@ -8,7 +8,34 @@
     <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
+    <!-- Title -->
     <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
+
+    <!-- MOD: Select2 CSS and Select2 JS for dropdown filtering functionality -->
+    <!-- jQuery -->          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 CSS -->     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Select2 JS -->      <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+
+        // Initialize Select2
+        $('.select2').select2({
+            placeholder: "",
+            allowClear: true,  // Allow clearing the selection
+        });
+
+        // Trigger the search when the dropdown is opened
+        $('.select2').on('select2:open', function() {
+            var $searchField = $(this).data('select2').dropdown.$search;
+            if ($searchField) {
+                $searchField.focus();  // Focus the search field immediately
+            }
+        });
+    });
+    </script>
+
 </head>
 
 <body>

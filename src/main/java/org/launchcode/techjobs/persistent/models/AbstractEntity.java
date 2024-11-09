@@ -12,8 +12,8 @@ public abstract class AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // MyToDo Annotation for Hibernate to flag as primary key
     private int id;
 
-    @NotNull(message = "Field cannot be empty") // MyToDo
-    @Size(min=1, max=255, message = "Text length is out of bounds") // MyToDo
+    @NotNull(message = "⚠\uFE0F Field cannot be empty") // MyToDo
+    @Size(min=1, max=255, message = "⚠\uFE0F Text length is out of bounds") // MyToDo
     private String name;
 
     public int getId() {

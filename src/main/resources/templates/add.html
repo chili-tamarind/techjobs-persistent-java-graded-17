@@ -10,37 +10,31 @@
 <form method="post" style="max-width:600px;">
     <div class="form-group">
         <label class="bold-v2" th:for="name">Name</label>
+        <span class="error" th:errors="${job.name}"></span>
         <input class="form-control" th:field="${job.name}" />
-        <span th:errors="${job.name}" class="error"></span>
         <hr>
     </div>
 
     <div class="form-group">
         <label class="bold-v2" th:for="employer">Employer</label> <br>
-        <select name="employerId">
+        <span class="error" th:if="${employerError}" th:text="${employerError}"></span>
+
+        <select name="employerId" class="select2" data-placeholder="">
+            <option value="" disabled selected>Search Employers</option>
             <option th:each="employer : ${employers}"
                     th:text="${employer.name}"
-                    th:value="${employer.id}"></option>
+                    th:value="${employer.id}">
+            </option>
         </select>
+
         <br> <br>
         <a class="bold-v1" th:href="@{'/employers/add'}">Add Employers</a>
         <hr>
     </div>
 
-<!--    <div class="form-group">-->
-<!--        <label class="bold-v2" th:for="skills">Skills</label> <br>-->
-<!--        <th:block th:each="skill : ${skills}">-->
-<!--            <input type="checkbox" name="skills" th:value="${skill.id}">-->
-<!--            <label th:text="${skill.name}"></label>-->
-<!--        </th:block>-->
-<!--        <br>-->
-<!--        <a class="bold-v1" th:href="@{'/skills/add'}">Add Skills</a>-->
-<!--        <hr>-->
-<!--    </div>-->
-
-
     <div class="form-group">
         <label class="bold-v2" th:for="skills">Skills</label> <br>
+        <span class="error" th:if="${skillError}" th:text="${skillError}" ></span>
         <div class="checkbox-container">
             <th:block th:each="skill : ${skills}">
                 <div class="checkbox-item">
@@ -59,3 +53,27 @@
 
 </body>
 </html>
+
+<!--    <div class="form-group">-->
+<!--        <label class="bold-v2" th:for="skills">Skills</label> <br>-->
+<!--        <th:block th:each="skill : ${skills}">-->
+<!--            <input type="checkbox" name="skills" th:value="${skill.id}">-->
+<!--            <label th:text="${skill.name}"></label>-->
+<!--        </th:block>-->
+<!--        <br>-->
+<!--        <a class="bold-v1" th:href="@{'/skills/add'}">Add Skills</a>-->
+<!--        <hr>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--        <label class="bold-v2" th:for="employer">Employer</label> <br>-->
+<!--        <span class="error" th:if="${employerError}" th:text="${employerError}" ></span>-->
+<!--        <select name="employerId" size="8">-->
+<!--            <option th:each="employer : ${employers}"-->
+<!--                    th:text="${employer.name}"-->
+<!--                    th:value="${employer.id}">-->
+<!--            </option>-->
+<!--        </select>-->
+<!--        <br> <a class="bold-v1" th:href="@{'/employers/add'}">Add Employers</a>-->
+<!--        <hr>-->
+<!--    </div>-->

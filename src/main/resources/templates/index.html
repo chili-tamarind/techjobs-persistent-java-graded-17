@@ -16,7 +16,7 @@
 <!--MOD -->
 
 <div class="container body-content">
-    <h2>TechJobs</h2>
+    <h2>All Jobs</h2>
     <ul class="list-container">
         <li th:each="job : ${jobs}">
             <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>

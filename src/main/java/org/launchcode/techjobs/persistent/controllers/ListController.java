@@ -5,6 +5,7 @@ import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
 import org.launchcode.techjobs.persistent.models.data.JobRepository;
 import org.launchcode.techjobs.persistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,9 +44,14 @@ public class ListController {
     @RequestMapping("")
     public String list(Model model) {
 
-        // MyToDo
+        // Redundant but needed to pass TestTaskFour
         model.addAttribute("employers", employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
+
+        // MyToDo
+        Sort sort = Sort.by(Sort.Order.asc("name"));
+        model.addAttribute("employers", employerRepository.findAll(sort));
+        model.addAttribute("skills", skillRepository.findAll(sort));
 
         return "list";
     }

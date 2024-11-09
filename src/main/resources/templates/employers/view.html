@@ -8,9 +8,9 @@
 <nav th:replace="~{fragments :: page-header}"></nav>
 
 <div class="job-listing">
-    <p th:text="${'Name: ' + employer.name}"></p>
-    <p th:text="${'Location: ' + employer.location}"></p>
-    <p> Jobs:
+    <p><span class="bold-v4">Name:</span> <span th:text="${employer.name}"></span></p>
+    <p><span class="bold-v4">Location:</span> <span th:text="${employer.location}"></span></p>
+    <p> <span class="bold-v4">Open Positions</span>
         <ul>
             <li th:each="job : ${employer.jobs}">
                 <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
@@ -18,7 +18,6 @@
         </ul>
     </p>
 </div>
-
 
 </body>
 </html>

@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class Skill extends AbstractEntity {
 
-    @NotEmpty(message = "Skills cannot be empty") // MyToDo
+    @NotEmpty(message = "⚠\uFE0F Skills cannot be empty") // MyToDo
     @Size(min=1, max=1000, message = "Text length is out of bounds") // MyToDo
     private String description;
 
@@ -20,13 +20,8 @@ public class Skill extends AbstractEntity {
     public Skill() {
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) {this.description = description; }
 
     // MyToDo
     //public Job getJobs() { return jobs; }
