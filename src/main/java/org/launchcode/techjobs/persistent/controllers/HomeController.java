@@ -67,47 +67,33 @@ public class HomeController {
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                     Errors errors, Model model,
-                                    @RequestParam(defaultValue = "0") int employerId, // Added default value to refresh form
-                                    @RequestParam(required = false) List<Integer> skills) {
+                                    @RequestParam int employerId, // Added default value to refresh form
+                                    @RequestParam List<Integer> skills) {
         // Note: @RequestParam Integer over @RequestParam int would avoid null errors
 
         model.addAttribute("title", "Add Job");
 
-        if (errors.hasErrors() || employerId == 0 || skills == null || skills.isEmpty()) {
-            Sort sort = Sort.by(Sort.Order.asc("name"));
-            model.addAttribute("employers", employerRepository.findAll(sort));
-            model.addAttribute("skills", skillRepository.findAll(sort));
 
-            if (employerId == 0) { // Employer selection check
-                model.addAttribute("employerError", "⚠\uFE0F Required: Select an employer");
-            }
+        Sort sort = Sort.by(Sort.Order.asc("name"));
+        model.addAttribute("employers", employerRepository.findAll(sort));
+        model.addAttribute("skills", skillRepository.findAll(sort));
 
-            if (skills == null || skills.isEmpty()) { // Skills selection check
-                model.addAttribute("skillError", "⚠\uFE0F Required: Select at least one skill");
-            }
 
-            return "add";
+        model.addAttribute("employerError", "⚠\uFE0F Required: Select an employer");
+        model.addAttribute("skillError", "⚠\uFE0F Required: Select at least one skill");
 
-        }
 
-            // Error validations above
-            /* Optional<Employer> optEmployer = employerRepository.findById(employerId);
-            if (optEmployer.isPresent()) {
-                Employer employer = optEmployer.get();
-                newJob.setEmployer(employer);
-            }*/
-
-            // MyToDo
-            Optional<Employer> optEmployer = employerRepository.findById(employerId);
+        Optional<Employer> optEmployer = employerRepository.findById(employerId);
+        if (optEmployer.isPresent()) {
             Employer employer = optEmployer.get();
             newJob.setEmployer(employer);
+        }
 
-            List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
-            newJob.setSkills(skillObjs);
-            jobRepository.save(newJob);
+        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
+        newJob.setSkills(skillObjs);
+        jobRepository.save(newJob);
 
-            return "redirect:";
-
+        return "redirect:";
     }
 
     @GetMapping("view/{jobId}")
